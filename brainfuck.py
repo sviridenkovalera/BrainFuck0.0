@@ -1,6 +1,8 @@
 import sys
 
-str = input ()
+str = ''
+for line in sys.stdin:
+    str += line.replace ( ' ', '')
 cmdIndex = 0
 cmd = ''
 index = 0
