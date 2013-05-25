@@ -31,7 +31,7 @@ while cmdIndex < len ( str ):
     elif cmd == '.':
         sys.stdout.write ( chr ( memMap [index] ) )
     elif cmd == ',':
-       memMap [index] = ord ( sys.stdin.read (1) )
+        memMap [index] = ord ( sys.stdin.read (1) )
     elif cmd == '[':
         loopsMap.append ( cmdIndex + 1 )
     elif cmd == ']':
