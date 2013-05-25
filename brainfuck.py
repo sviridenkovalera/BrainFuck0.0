@@ -41,6 +41,6 @@ while cmdIndex < len ( str ):
             cmdIndex = loopsMap [ len ( loopsMap ) - 1]
             continue
     cmdIndex += 1
-       
+print ('')       
      
         
