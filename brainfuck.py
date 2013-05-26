@@ -9,7 +9,7 @@ loopsMap       = []  #store cmdIndex + 1 - begin loop
 memMap         = [0] #memory map
 commandMap     = ('+', '-', '<', '>', '[', ']', '.', ',') # all commad BF language 
 #input program code
-for byte in sys.stdin.read(1):
+for byte in sys.stdin.read():
     if byte in commandMap:
         code += byte
 #processing code 
