@@ -5,8 +5,9 @@ code           = ''  #input program code
 point          = 0   #point ceill of memory map
 cmdIndex       = 0   #index of current command
 ceillSize      = 256 #size single ceill
-loopsMap       = []  #store cmdIndex + 1 - begin loop 
-memMap         = [0] #memory map
+maxSizeMemMap  = 30000
+loopsMap       = [] 
+memMap         = [ 0 for index in range ( maxSizeMemMap ) ] #memory map
 commandMap     = ('+', '-', '<', '>', '[', ']', '.', ',') # all commad BF language 
 #input program code
 for byte in sys.stdin.read():
@@ -18,12 +19,11 @@ while cmdIndex < len ( code ):
     if cmd == '<':
         point -= 1
         if point < 0:
-            print ( 'Error index < 0' )
-            sys.exit ( - 1 )
+            point = maxSizeMemMap - 1
     elif cmd == '>':
         point += 1
-        if point == len ( memMap ):
-            memMap.append ( 0 )
+        if point == maxSizeMemMap:
+            point = 0
     elif cmd == '+':
         memMap [point] += 1
         memMap [point] %= ceillSize
@@ -35,13 +35,14 @@ while cmdIndex < len ( code ):
         sys.stdout.write ( chr ( memMap [point] ) )
     elif cmd == ',':
         memMap [point] = ord ( sys.stdin.read (1) )
+        memMap [point] %= ceillSize
     elif cmd == '[':
-        loopsMap.append ( cmdIndex + 1 )
+        loopsMap.append ( cmdIndex )
     elif cmd == ']':
-        if memMap [point] == 0:
+        if memMap and memMap [point] == 0:
             loopsMap.pop ()
         else:
-            cmdIndex = loopsMap [len ( loopsMap ) - 1]
+            cmdIndex = loopsMap [len ( loopsMap ) - 1] + 1
             continue
     cmdIndex += 1
 print ('')       
