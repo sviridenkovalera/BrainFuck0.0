@@ -5,7 +5,7 @@ code           = ''  #input program code
 point          = 0   #point ceill of memory map
 cmdIndex       = 0   #index of current command
 ceillSize      = 256 #size single ceill
-maxSizeMemMap  = 30000
+maxSizeMemMap  = 30000  
 loopsMap       = [] 
 memMap         = [ 0 for index in range ( maxSizeMemMap ) ] #memory map
 commandMap     = ('+', '-', '<', '>', '[', ']', '.', ',') # all commad BF language 
@@ -13,6 +13,9 @@ commandMap     = ('+', '-', '<', '>', '[', ']', '.', ',') # all commad BF langua
 for byte in sys.stdin.read():
     if byte in commandMap:
         code += byte
+for i in code:
+    print (i)
+sys.exit ()
 #processing code 
 while cmdIndex < len ( code ):
     cmd = code [cmdIndex]
