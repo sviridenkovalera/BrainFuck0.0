@@ -22,13 +22,15 @@ while cmdIndex < len ( code ):
             print ( 'Error index < 0' )
             sys.exit ( - 1 )
     elif cmd == '>':
-        index += 1
-        if index == len ( memMap ):
+        point += 1
+        if point == len ( memMap ):
             memMap.append ( 0 )
     elif cmd == '+':
         memMap [point] += 1
     elif cmd == '-':
         memMap [point] -= 1
+        if memMap [point] < 0:
+            memMap [point] += ceillSize
     elif cmd == '.':
         sys.stdout.write ( chr ( memMap [point] ) )
     elif cmd == ',':
