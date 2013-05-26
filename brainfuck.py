@@ -1,7 +1,7 @@
 _DEBUG = False
 _ADD_FUNCTION = False
 _SHOW_FORMT_CODE = False
-_SHOW_CLINE_CODE = True
+_SHOW_CLINE_CODE = False
 import sys
 def clineCode ( code ):
     print ( 'Cliner code:')
@@ -86,6 +86,8 @@ while cmdIndex < len ( code ):
         if _DEBUG:
             print ('Print value:    ')
         sys.stdout.write ( chr ( memMap [point] ) )
+        if _DEBUG:
+            print ('')
     elif cmd == ',':
         if _DEBUG:
             print ('Input value:')
