@@ -15,7 +15,6 @@ for byte in sys.stdin.read():
 #processing code 
 while cmdIndex < len ( code ):
     cmd = code [cmdIndex]
-    memMap [point] %= ceillSize
     if cmd == '<':
         point -= 1
         if point < 0:
@@ -27,10 +26,11 @@ while cmdIndex < len ( code ):
             memMap.append ( 0 )
     elif cmd == '+':
         memMap [point] += 1
+        memMap [point] %= ceillSize
     elif cmd == '-':
         memMap [point] -= 1
         if memMap [point] < 0:
-            memMap [point] += ceillSize
+            memMap [point] = ceillSize - 1
     elif cmd == '.':
         sys.stdout.write ( chr ( memMap [point] ) )
     elif cmd == ',':
