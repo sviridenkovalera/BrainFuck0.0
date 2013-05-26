@@ -1,9 +1,9 @@
 _DEBUG = False
 _ADD_FUNCTION = False
-_SHOW_FORMT_CODE = False
-_SHOW_CLINE_CODE = False
+_SHOW_FORMAT_CODE = False
+_SHOW_CLEAN_CODE = False
 import sys
-def clineCode ( code ):
+def cleanCode ( code ):
     print ( 'Cliner code:')
     print ( code )
     print ('')
@@ -36,10 +36,10 @@ for byte in sys.stdin.read():
     if byte in commandMap:
         code += byte
 if _ADD_FUNCTION:
-    if _SHOW_FORMT_CODE:
+    if _SHOW_FORMAT_CODE:
         formatCode ( code )
-    if _SHOW_CLINE_CODE:
-        clineCode ( code )
+    if _SHOW_CLEAN_CODE:
+        cleanCode ( code )
     sys.exit (0)
 steps_all = 0
 #processing code 
