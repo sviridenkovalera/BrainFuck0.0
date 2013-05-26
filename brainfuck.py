@@ -13,11 +13,43 @@ commandMap     = ('+', '-', '<', '>', '[', ']', '.', ',') # all commad BF langua
 for byte in sys.stdin.read():
     if byte in commandMap:
         code += byte
+"""shift = 0
+add_shift = 4
 for i in code:
-    print (i)
-sys.exit ()
+    if i == '[':
+        shift += add_shift
+    for j in range ( shift ):
+        sys.stdout.write ( '    ')
+    if i == ']':
+        shift -= add_shift
+    if i not in ( '[', ']'):
+        sys.stdout.write ( ' ')
+    print ( str ( i ) )
+sys.exit ( 0 )"""
+
+steps_all = 0
 #processing code 
 while cmdIndex < len ( code ):
+    print ( 'Step: ' + str ( steps_all) )
+    print ( 'Current point: ' + str ( cmdIndex ) )
+    print ( 'Command: ' + code [ cmdIndex ] )
+    steps_all += 1
+    print ('****************************')
+    _cnt = 10
+    _min = point - _cnt
+    if _min < 0:
+        _min = 0
+    _max = point + _cnt
+    if _max >= maxSizeMemMap:
+        _max = maxSizeMemMap - 1
+    for prtIndex in range ( _min, _max + 1 ):
+        if prtIndex != point:
+            print ( "#" + str ( prtIndex) + ' Value: ' + str ( memMap [prtIndex]) )
+        else:
+            print ( "[ #" + str ( prtIndex) + ' Value: ' + str ( memMap [prtIndex]) + str (' ]') )
+    print ('*****************************')
+    print ('')
+    sys.stdin.read (1)
     cmd = code [cmdIndex]
     if cmd == '<':
         point -= 1
@@ -35,8 +67,10 @@ while cmdIndex < len ( code ):
         if memMap [point] < 0:
             memMap [point] = ceillSize - 1
     elif cmd == '.':
+        print ('Print value:')
         sys.stdout.write ( chr ( memMap [point] ) )
     elif cmd == ',':
+        print ('Input value:')
         memMap [point] = ord ( sys.stdin.read (1) )
         memMap [point] %= ceillSize
     elif cmd == '[':
