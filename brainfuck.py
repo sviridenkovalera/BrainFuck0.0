@@ -51,10 +51,10 @@ while cmdIndex < len ( code ):
         steps_all += 1
         print ('****************************')
         _cnt = 10
-        _min = point - _cnt
+        _min = point - _cnt // 2
         if _min < 0:
             _min = 0
-        _max = point + _cnt
+        _max = _min + _cnt
         if _max >= maxSizeMemMap:
             _max = maxSizeMemMap - 1
         for prtIndex in range ( _min, _max + 1 ):
