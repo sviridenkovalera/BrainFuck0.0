@@ -4,7 +4,7 @@ _SHOW_FORMAT_CODE = False
 _SHOW_CLEAN_CODE = False
 import sys
 def cleanCode ( code ):
-    print ( 'Cliner code:')
+    print ( 'Clean code:')
     print ( code )
     print ('')
 def formatCode ( code ):
